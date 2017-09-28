@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ru.myCompany.entity.Person;
-import ru.myCompany.service.PersonService;
+import ru.myCompany.entity.Grade;
+import ru.myCompany.service.GradeService;
 
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
@@ -16,19 +16,19 @@ import java.sql.SQLException;
 
 //@Controller
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/grade")
+public class GradeController {
 
-    private PersonService personService;
+    private GradeService gradeService;
 
     @Autowired
-    public PersonController(PersonService personService) {
-        this.personService = personService;
+    public GradeController(GradeService gradeService) {
+        this.gradeService = gradeService;
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    Person getPersonById(@PathVariable Integer id) throws SQLException, NoResultException /*PersistenceException*/ {
-        return personService.getPersonById(id, "getPersonById");
+    Grade getGradeById(@PathVariable Integer id) throws SQLException, NoResultException /*PersistenceException*/ {
+        return gradeService.getGradeById(id, "getGradeById");
     }
 
 }
